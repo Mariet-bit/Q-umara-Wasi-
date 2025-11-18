@@ -1,0 +1,115 @@
+:root{
+  --green: #2f7d4e;
+  --green-dark: #245c3a;
+  --beige: #f3f2e9;
+  --accent: #6aa96b;
+  --card: #ffffff;
+  --muted: #6f7a6f;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:'Poppins',sans-serif;
+  background: linear-gradient(180deg,var(--beige),#efece2);
+  color:#16321f;
+}
+.app {
+  max-width:1200px;
+  margin:18px auto;
+  display:flex;
+  gap:18px;
+  padding:10px;
+}
+
+/* Sidebar */
+.sidebar{
+  width:340px;
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+}
+.card{
+  background:var(--card);
+  border-radius:12px;
+  padding:12px;
+  box-shadow:0 6px 18px rgba(0,0,0,0.06);
+}
+.logo-card { display:flex; gap:12px; align-items:center; flex-direction:column; padding:16px; }
+#logo-img { width:86px; height:auto; margin-bottom:6px; border-radius:8px; object-fit:contain; }
+
+.logo { display:flex; gap:12px; align-items:center; }
+h1{margin:0;font-size:18px}
+.slogan{color:var(--muted);font-size:13px;margin-top:6px}
+
+.stats {display:flex;gap:8px;flex-wrap:wrap}
+.stat {flex:1;min-width:96px;text-align:center;padding:8px;border-radius:8px;background:linear-gradient(180deg,#fff,#f7f7f7)}
+.stat strong{display:block;font-size:20px}
+.muted{color:var(--muted);font-size:13px}
+.center {display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px}
+
+/* Main area */
+.main { flex:1;display:flex;flex-direction:column;gap:12px; }
+.topbar {display:flex;justify-content:space-between;align-items:center}
+.controls {display:flex;gap:8px}
+.map-wrap{ display:flex; gap:14px; }
+.map {
+  width:760px;height:520px;border-radius:12px;background: linear-gradient(180deg,#eaf7ea,#e2f2e2);
+  position:relative;overflow:hidden;border:4px solid rgba(47,125,78,0.06);
+}
+.hud{position:absolute;right:12px;top:12px;background:rgba(255,255,255,0.85);padding:8px;border-radius:10px;font-weight:600}
+.zone{
+  position:absolute;display:flex;align-items:center;justify-content:center;font-weight:700;color:rgba(0,0,0,0.45);
+  border:2px dashed rgba(0,0,0,0.04);border-radius:8px;font-size:14px;padding:6px;
+}
+.zone.locked{opacity:0.45}
+.zone.locked::after{content:"🔒";position:absolute;right:6px;top:6px}
+
+/* player */
+.player {
+  width:44px;height:56px;border-radius:10px;background:linear-gradient(180deg,#fff,#f1f1f1);
+  position:absolute;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;padding-bottom:6px;color:var(--green-dark);
+  box-shadow:0 8px 18px rgba(0,0,0,0.12);border:3px solid rgba(47,125,78,0.08)
+}
+.player .head{width:28px;height:28px;border-radius:50%;background:var(--green-dark);border:3px solid white;margin-top:6px}
+
+/* trash */
+.trash { width:28px;height:28px;border-radius:6px;position:absolute;display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-size:13px;box-shadow:0 6px 12px rgba(0,0,0,0.12);cursor:pointer}
+.t-bottle{background:#2b8cff}
+.t-bag{background:#fb8b24}
+.t-wrapper{background:#ffd166}
+
+.right-panel{width:280px;display:flex;flex-direction:column;gap:12px}
+
+.btn{
+  background:var(--green);color:white;padding:10px;border-radius:10px;border:none;cursor:pointer;font-weight:700;
+}
+.btn.secondary{background:#e9f6ea;color:var(--green);font-weight:700;border:1px solid rgba(47,125,78,0.08)}
+
+.progress-wrap{height:14px;background:#e9f6ea;border-radius:10px;overflow:hidden}
+.progress{height:100%;background:linear-gradient(90deg,var(--green),var(--accent));width:0%}
+
+.log{font-size:13px;color:var(--muted);max-height:120px;overflow:auto}
+footer.note{text-align:center;color:var(--muted);font-size:13px;padding-top:8px}
+
+/* modal premio */
+.modal{
+  position:fixed;left:0;top:0;width:100%;height:100%;background:rgba(0,0,0,0.6);display:none;align-items:center;justify-content:center;z-index:9999;
+}
+.modal-content{
+  background:white;padding:18px;border-radius:12px;width:90%;max-width:520px;box-shadow:0 10px 40px rgba(0,0,0,0.3);
+  text-align:center;
+}
+.modal-content input{padding:10px;width:85%;margin-top:8px;border-radius:8px;border:1px solid #ddd}
+.modal-content ul{padding-left:18px;text-align:left;}
+
+/* responsive */
+@media(max-width:1100px){
+  .map{width:600px;height:420px}
+  .sidebar{display:none}
+  .right-panel{width:240px}
+}
+@media(max-width:760px){
+  .app{flex-direction:column;padding:8px}
+  .map{width:100%;height:420px}
+  .sidebar{width:100%}
+}

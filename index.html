@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <title>Untitled</title>
+    <link rel="stylesheet" href="./style.css">
+
+  </head>
+    
+  <body>
+  <!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Q'umara Wasi — Aventura en Puno</title>
+
+  <!-- enlace al CSS separado -->
+  <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+  <div class="app">
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      <div class="card logo-card">
+        <img id="logo-img" src="https://drive.google.com/uc?export=view&id=1aYCzg4UleWZGFttuxsvYnON3rrD7NFWq" alt="Logo Q'umara Wasi">
+        <div class="logo">
+          <div>
+            <h1>Q’umara Wasi</h1>
+            <div class="slogan">Construyendo un Puno más limpio</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="stats">
+          <div class="stat"><small class="muted">Basura</small><strong id="stat-trash">0</strong></div>
+          <div class="stat"><small class="muted">Eco-ladrillos</small><strong id="stat-bricks">0</strong></div>
+          <div class="stat"><small class="muted">Dinero (S/)</small><strong id="stat-money">0</strong></div>
+        </div>
+      </div>
+
+      <div class="card center">
+        <button class="btn" id="create-btn">Crear eco-ladrillo</button>
+      </div>
+
+      <div class="card center">
+        <button class="btn" id="sell-btn">Vender eco-ladrillos (S/2 c/u)</button>
+        <small class="muted">Sigue subiendo para desbloquear zonas</small>
+      </div>
+
+      <div class="card">
+        <h3 style="margin:6px 0">Bitácora (Últimas incidencias)</h3>
+        <div id="log" class="log"></div>
+      </div>
+
+      <div class="card center">
+        <button class="btn secondary" id="save-btn">Guardar progreso</button>
+        <button class="btn secondary" id="load-btn">Cargar progreso</button>
+      </div>
+
+      <footer class="card note">Teclas: Flechas/WASD = mover · Espacio = recolectar</footer>
+    </aside>
+
+    <!-- MAIN -->
+    <main class="main">
+      <div class="topbar card">
+        <div>
+          <h2 style="margin:0">Aventura en Puno — Q’umara Wasi</h2>
+          <small class="muted">Recolecta, crea eco-ladrillos y expande tu emprendimiento</small>
+        </div>
+        <div class="controls">
+          <button class="btn secondary" id="help-btn">Cómo jugar</button>
+          <button class="btn" id="reset-btn">Reiniciar</button>
+        </div>
+      </div>
+
+      <div class="map-wrap">
+        <div class="map card" id="map">
+          <div class="hud" id="hud">Zona: Centro</div>
+          <!-- zones injected by JS -->
+          <div class="player" id="player"><div class="head"></div></div>
+        </div>
+
+        <div class="right-panel">
+          <div class="card">
+            <h3 style="margin:6px 0">Tienda</h3>
+            <div style="display:flex;flex-direction:column;gap:8px">
+              <div style="display:flex;justify-content:space-between;align-items:center">
+                <div><strong>Contratar ayudante</strong><br><small class="muted">Costo: S/10</small></div>
+                <button class="btn" id="hire-btn">Contratar</button>
+              </div>
+              <div style="display:flex;justify-content:space-between;align-items:center">
+                <div><strong>Mejorar eficiencia</strong><br><small class="muted">Costo: S/25</small></div>
+                <button class="btn secondary" id="upgrade-btn">Mejorar</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <h3 style="margin:6px 0">Estado</h3>
+            <p style="margin:6px 0"><small class="muted">Nivel:</small> <strong id="player-level">1 - Fundador</strong></p>
+            <p style="margin:6px 0"><small class="muted">Ayudantes:</small> <strong id="helpers-count">0</strong></p>
+            <p style="margin:6px 0"><small class="muted">Basura por ladrillo:</small> <strong id="trash-per-brick">5</strong></p>
+          </div>
+
+          <div class="card">
+            <h3 style="margin:6px 0">Progreso</h3>
+            <div class="progress-wrap"><div id="progress-bar" class="progress"></div></div>
+            <div style="height:8px"></div>
+            <div class="muted" id="zones-list"></div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- MODAL FINAL DE PREMIO (aparece cuando se desbloquean TODAS las zonas) -->
+  <div id="modalPremio" class="modal">
+    <div class="modal-content">
+      <h2>🎉 ¡Felicidades, has limpiado Puno!</h2>
+      <p>Has desbloqueado todas las zonas de Puno.</p>
+      <p>Registra tu nombre para recibir:</p>
+      <ul style="text-align:left;">
+        <li>➡️ Cupón 40% de descuento para una prenda de Q'umara Wasi</li>
+        <li>➡️ Primer puesto: ¡Una polera gratis! (se indicará cómo reclamar)</li>
+      </ul>
+
+      <input id="winnerName" type="text" placeholder="Tu nombre completo">
+      <div style="display:flex;gap:8px;justify-content:center;margin-top:12px">
+        <button class="btn" id="claimPrizeBtn">Solicitar premio</button>
+        <button class="btn secondary" id="closePrizeBtn">Cerrar</button>
+      </div>
+      <p id="prizeInfo" class="muted" style="margin-top:10px"></p>
+    </div>
+  </div>
+
+  <!-- enlace al JS separado -->
+  <script src="juego.js"></script>
+</body>
+</html>
+    <script  src="./script.js"></script>
+
+  </body>
+  
+</html>
